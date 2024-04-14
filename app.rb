@@ -17,11 +17,13 @@ get("/") do
   raw_data_string = raw_data.to_s
   
   # convert the string to JSON
-  @parsed_data = JSON.parse(raw_data_string)
+  parsed_data = JSON.parse(raw_data_string)
   
   # get the symbols from the JSON
+  currency_hash = parsed_data.fetch("currencies")
   
-  # render a view template where I show the symbols
+  @keys_array = currency_hash.keys
+
   erb(:home)
 end
 

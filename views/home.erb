@@ -11,9 +11,9 @@
   <body>
     <div class="home">
       <h1>Currency pairs</h1>
-      <p><%=@parsed_data%></p>
-      <a href="/convert">Convert</a>
-      <a href="/results">Results</a>
+      <%@keys_array.each do |key|%>
+        <p>Convert <%=#{key}%> to...</p>
+      <%end%>
     </div>
   </body>
 </html>
