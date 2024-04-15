@@ -32,6 +32,21 @@ get("/:from_currency") do
 
   api_url = "https://api.exchangerate.host/list?access_key=#{ENV["EXCHANGE_RATE_KEY"]}"
   
+  # use HTTP.get to retrieve the API information
+  raw_data = HTTP.get(api_url)
+  
+  # convert the raw request to a string
+  raw_data_string = raw_data.to_s
+  
+  # convert the string to JSON
+  parsed_data = JSON.parse(raw_data_string)
+  
+  # get the symbols from the JSON
+  currency_hash = parsed_data.fetch("currencies")
+  
+  @keys_array = currency_hash.keys
+
+  erb(:from)
   # some more code to parse the URL and render a view template
 end
 
@@ -40,6 +55,15 @@ get("/:from_currency/:to_currency") do
   @destination_currency = params.fetch("to_currency")
 
   api_url = "https://api.exchangerate.host/convert?access_key=#{ENV["EXCHANGE_RATE_KEY"]}&from=#{@original_currency}&to=#{@destination_currency}&amount=1"
+
+    # use HTTP.get to retrieve the API information
+    raw_data = HTTP.get(api_url)
   
-  # some more code to parse the URL and render a view template
+    # convert the raw request to a string
+    raw_data_string = raw_data.to_s
+    
+    # convert the string to JSON
+    @parsed_data = JSON.parse(raw_data_string)
+  
+  erb(:to)
 end

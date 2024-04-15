@@ -12,7 +12,7 @@
     <div class="home">
       <h1>Currency pairs</h1>
       <%@keys_array.each do |key|%>
-        <p>Convert <%=key%> to...</p>
+        <a href="/<%=key%>">Convert <%=key%> to...</a>
       <%end%>
     </div>
   </body>
