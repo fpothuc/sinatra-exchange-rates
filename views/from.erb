@@ -11,9 +11,9 @@
   <body>
     <div class="conversion">
       <h1>Convert <%=@original_currency%></h1>
-      <a href="/">Home</a>
+      <a href="/">Back</a>
       <%@keys_array.each do |key|%>
-        <a href="/<%=@original_currency%>/<%=key%>">Convert <%=@original_currency%> to <%=key%></a>
+        <a href="/<%=@original_currency%>/<%=key%>">Convert 1 <%=@original_currency%> to <%=key%></a>
       <%end%>
     </div>
   </body>
